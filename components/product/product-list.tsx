@@ -1,6 +1,7 @@
+import ProductCard from "./prodcut card";
 
 
-const ProductList = ({ data, title, limit }: { data: any; title?: string; }) => {
+const ProductList = ({ data, title, limit }: { data: any; title?: string; limit?: number }) => {
     const limitedData = limit ? data.slice(0, limit) : data;
     return (
         <div className="my-10" >
@@ -9,7 +10,7 @@ const ProductList = ({ data, title, limit }: { data: any; title?: string; }) => 
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {limitedData.map((product: any) => (
-                        <div key={product.id} className="border p-4 rounded-lg">{product.name}</div>
+                        <ProductCard key={product.slug} product={product} />
                     ))}
                 </div>
 
