@@ -10,11 +10,13 @@ const ProductPrice = ({ value, className }: { value: number, className?: string 
     const [whole, decimal] = formattedPrice.split(".");
 
     return (
+        <p>
         <span className={cn('text-2xl', className)}>
             <span className="text-xs align-super">$</span>
             {whole}
             <span className="text-xs align-super">.{decimal}</span>
         </span>
+        </p>
     );
 }
 
