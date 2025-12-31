@@ -1,7 +1,8 @@
-import sampleData from "@/db/sample-data";
+import { getLatestProduct } from "@/lib/actions/product.actions";
 import ProductList from "@/components/product/product-list";
-const Homepage = () => {
-  return (<ProductList data={sampleData.products} title="Featured Products" limit={4} />);
+const Homepage = async () => {
+  const latestProducts = await getLatestProduct()
+  return (<ProductList data={latestProducts} title="Featured Products" />);
 }
 
 export default Homepage;
