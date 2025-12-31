@@ -1,14 +1,10 @@
-
-import { HeartIcon } from 'lucide-react'
-
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Card, CardHeader, CardDescription, CardTitle, CardFooter, CardContent } from '@/components/ui/card'
-
-import { cn, formatNumberWithDecimal } from '@/lib/utils'
+import { Card, CardContent } from '@/components/ui/card'
 import { getProductBySlug } from "@/lib/actions/product.actions";
 import ProductPrice from '@/components/product/product-price'
 import { notFound } from 'next/navigation'
+import ProductImages from '@/components/product/product-images';
 
 const ProductDetailsPage = async (props: { params: Promise<{ slug: string }> }) => {
     // const [liked, setLiked] = useState<boolean>(false)
@@ -20,7 +16,9 @@ const ProductDetailsPage = async (props: { params: Promise<{ slug: string }> }) 
         <section>
             <div className="grid grid-cols-1 md:grid-cols-5">
                 {/* Product Images */}
-                <div className="col-span-2">{/* Image component */}</div>
+                <div className="col-span-2">
+                     <ProductImages images={product.images} />
+                </div>
                 {/* Product Details */}
                 <div className="col-span-2 p-5">
                     <div className="flex flex-col gap-6">
@@ -47,7 +45,7 @@ const ProductDetailsPage = async (props: { params: Promise<{ slug: string }> }) 
                                     <ProductPrice value={Number(product.price)} />
                                 </div>
                             </div>
-                             <div className="mb-2 flex justify-between">
+                            <div className="mb-2 flex justify-between">
                                 <div>Status</div>
                                 {product.stock > 0 ? (
                                     <Badge variant="default">In Stock</Badge>
