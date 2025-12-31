@@ -27,5 +27,6 @@ model Product {
   numReviews  Int      @default(0)
   isFeatured  Boolean  @default(false)
   banner      String?
+  brand       String
   createdAt   DateTime @default(now()) @db.Timestamp(6)
 }
