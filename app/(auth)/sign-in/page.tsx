@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 import { APP_NAME } from "@/lib/constants";
+import SignInForm from "./sign-in-form";
 
 export const metadata: Metadata = {
     title: 'Sign In',
@@ -22,7 +23,7 @@ const SingInPage = () => {
                     <CardDescription className="text-center">Sign in to your account</CardDescription>
                     <CardContent className="space-y-6">
                         {/* Sign-in form will go here */}
-                        
+                        <SignInForm />
                     </CardContent>
                 </CardHeader>
             </Card>
