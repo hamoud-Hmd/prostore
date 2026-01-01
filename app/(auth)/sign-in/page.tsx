@@ -4,14 +4,21 @@ import Image from "next/image";
 import { Metadata } from "next";
 import { APP_NAME } from "@/lib/constants";
 import SignInForm from "./sign-in-form";
-
+import { auth } from "@/auth"
+import { redirect } from "next/navigation";
 export const metadata: Metadata = {
     title: 'Sign In',
     description: 'Sign in to your ProStore account to access exclusive features and manage your orders with ease.',
 }
 
 
-const SingInPage = () => {
+const SingInPage = async () => {
+    const session = await auth();
+
+    if (session) {
+        redirect('/');
+    }
+
     return (
         <div className="w-full max-w-md mx-auto">
             <Card>
