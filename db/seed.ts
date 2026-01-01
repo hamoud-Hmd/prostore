@@ -3,7 +3,6 @@ import { PrismaClient } from "../lib/generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { Pool } from "pg";
 import sampleData from "./sample-data";
-import { hashSync } from "bcrypt-ts-edge";
 
 if (!process.env.DATABASE_URL) {
   throw new Error(
