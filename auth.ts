@@ -50,16 +50,48 @@ export const config = {
     }),
   ],
   callbacks: {
-    async session({ session, user, trigger, token }: any) {
-      // Set the user id from the token
+    async session({ session, token, trigger }: any) {
+      // Set the user id and role from the token
       session.user.id = token.sub;
+      session.user.role = token.role;
+      session.user.name = token.name;
 
-      // If there is an update, set theuser name
+      // If there is an update, set the user name
       if (trigger === "update") {
-        session.user.name = user.name;
+        session.user.name = token.name;
+      } else {
+        session.user.name = token.name;
       }
 
       return session;
+    },
+    async jwt({ token, user, trigger, session }: any) {
+      // Assign user fields to token
+      if (user) {
+        token.role = user.role;
+
+        if (user.name === "NO_NAME") {
+          token.name = user.email?.split("@")[0] || "User";
+
+          // Update name in database
+          try {
+            await prisma.user.update({
+              where: { id: user.id },
+              data: { name: token.name },
+            });
+          } catch (error) {
+            console.error("Failed to update user name:", error);
+          }
+        }
+      }
+
+      // Handle session updates from client
+      if (trigger === "update" && session) {
+        token.name = session.user?.name;
+        token.role = session.user?.role;
+      }
+
+      return token;
     },
   },
 };
