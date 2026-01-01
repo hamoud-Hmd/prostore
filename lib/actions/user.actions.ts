@@ -64,6 +64,6 @@ export async function signUpWithCredentials(
     if (isRedirectError(error)) {
       throw error;
     }
-    return { success: false, message: "Failed to create account" };
+    return { success: false, message: "Invalid email or password" };
   }
 }
