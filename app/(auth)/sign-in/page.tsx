@@ -12,11 +12,16 @@ export const metadata: Metadata = {
 }
 
 
-const SingInPage = async () => {
+const SingInPage = async (props: {
+    searchParams: Promise<{
+        callbackUrl: string;
+    }>
+}) => {
+    const { callbackUrl } = await props.searchParams;
     const session = await auth();
 
     if (session) {
-        redirect('/');
+        redirect(callbackUrl || '/');
     }
 
     return (
