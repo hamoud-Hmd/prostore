@@ -3,6 +3,7 @@ import { SheetTrigger, Sheet, SheetContent, SheetTitle, SheetDescription} from "
 import ModeToggle from "./mode-toggle";
 import { Button } from "@/components/ui/button";
 import Link from 'next/link';
+import UserButton from "./user-button";
 
 
 const MenuSheet = () => {
@@ -21,11 +22,7 @@ const MenuSheet = () => {
                             <ShoppingCart /> Cart
                         </Link>
                     </Button>
-                    <Button asChild className="w-full mt-2">
-                        <Link href="/sign-in" >
-                            <UserIcon /> Sign In
-                        </Link>
-                    </Button>
+               <UserButton />
                     <SheetDescription></SheetDescription>
                 </SheetContent>
 
