@@ -1,9 +1,6 @@
 'use server'
 
-import { CartItem } from "@/types";
-
-
-export async function AddItemToCart(data: CartItem) {
+export async function AddItemToCart() {
     return {
         success: true,
         message: "Item added to cart successfully",
