@@ -5,7 +5,7 @@ import { getProductBySlug } from "@/lib/actions/product.actions";
 import ProductPrice from '@/components/product/product-price'
 import { notFound } from 'next/navigation'
 import ProductImages from '@/components/product/product-images';
-
+import AddToCart from '@/components/product/add-to-cart';
 const ProductDetailsPage = async (props: { params: Promise<{ slug: string }> }) => {
     // const [liked, setLiked] = useState<boolean>(false)
     const { slug } = await props.params;
@@ -54,7 +54,15 @@ const ProductDetailsPage = async (props: { params: Promise<{ slug: string }> }) 
                                 )}
                             </div>
                             {(product.stock > 0 && (
-                                <Button className="w-full mt-4">Add to Cart</Button>
+                                <div className='flex-center'>
+                                    <AddToCart item={{
+                                        productId: product.id,
+                                        name: product.name,
+                                        price: Number(product.price),
+                                        qty: 1,
+                                        image: product.images![0]
+                                    }} />
+                                </div>
                             ))}
                         </CardContent>
                     </Card>
