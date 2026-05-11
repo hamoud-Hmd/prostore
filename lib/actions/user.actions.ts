@@ -65,6 +65,6 @@ export async function signUpWithCredentials(
     if (isRedirectError(error)) {
       throw error;
     }
-    return { success: false, message: await formatErrors(error)};
+    return { success: false, message: formatErrors(error)};
   }
 }

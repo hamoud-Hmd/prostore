@@ -57,7 +57,8 @@ const ProductDetailsPage = async (props: { params: Promise<{ slug: string }> }) 
                                     <AddToCart item={{
                                         productId: product.id,
                                         name: product.name,
-                                        price: Number(product.price),
+                                        slug: product.slug,
+                                        price: product.price,
                                         qty: 1,
                                         image: product.images![0]
                                     }} />

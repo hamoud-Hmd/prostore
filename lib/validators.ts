@@ -48,7 +48,7 @@ export const signUpFormSchema = z
 
 
 // Cart Schemas
-export const cartItmeSchem = z.object({
+export const cartItmeSchema = z.object({
   productId: z.string().min(1, "Product ID is required"),
   name: z.string().min(1, "Product name is required"),
   slug: z.string().min(1, "Product slug is required"),
@@ -59,9 +59,9 @@ export const cartItmeSchem = z.object({
 
 
 export const insertCartSchema = z.object({
-  items: z.array(cartItmeSchem),
+  items: z.array(cartItmeSchema),
   itemsPrice: currency,
-  totalPrce: currency,
+  totalPrice: currency,
   shippingPrice: currency,
   taxPrice: currency,
   sessionCartId: z.string().min(1, "Session Cart ID is required"),

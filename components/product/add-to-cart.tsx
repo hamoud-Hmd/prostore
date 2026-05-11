@@ -5,7 +5,7 @@ import { Plus } from 'lucide-react';
 import { CartItem } from '@/types';
 import { useToast } from '@/hooks/use-toast';
 import { ToastAction } from '@/components/ui/toast';
-import { AddItemToCart } from '@/lib/actions/cart.actions';
+import { addItemToCart } from '@/lib/actions/cart.actions';
 
 
 const AddToCart = ({ item }: { item: CartItem }) => {
@@ -13,7 +13,7 @@ const AddToCart = ({ item }: { item: CartItem }) => {
     const { toast } = useToast();
 
     const handleAddToCart = async () => {
-        const response = await AddItemToCart(item);
+        const response = await addItemToCart(item);
 
         if (!response.success) {
             toast({
